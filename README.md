@@ -1,0 +1,7 @@
+This game is a tournament simulation where eight unique fighters compete in elimination-style matches until only one remains. At the start of each match, two participants face off with randomized but limited HP and damage stats. As the player, you are not controlling the fighters directly — instead, you take on the role of a spectator who can influence the outcome before the fight begins.
+
+Before each battle, you are given a limited number of actions, randomly between one and three. Using these actions, you can select one of the two fighters and modify their stats by increasing or decreasing their HP or damage within defined limits. Once your actions are used or you are satisfied with your decisions, you press Proceed and the fight plays out automatically in a turn-based simulation. Fighters exchange attacks until one of them reaches zero HP. During the battle, HP bars animate and a battle log displays each hit in real time.
+
+Additionally, there is a mission system. At the beginning of the tournament, a random fighter is selected as your mission target. Your objective is to help this character reach the final and ultimately win the tournament. If your chosen fighter wins the tournament, the mission is completed and a golden overlay effect highlights the victory. If your fighter is eliminated at any point, the mission immediately fails and a red overlay signals the defeat.
+
+The game blends strategy and randomness, as you must carefully decide how to use your limited influence each round to try and guide your chosen fighter to ultimate victory.
