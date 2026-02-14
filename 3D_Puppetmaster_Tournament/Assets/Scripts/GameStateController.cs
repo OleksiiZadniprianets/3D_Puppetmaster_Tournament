@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameStateController : MonoBehaviour
@@ -100,6 +102,9 @@ public class GameStateController : MonoBehaviour
     public Color negativeFlashColor = new Color(1f, 0.2f, 0.2f, 0.7f);
     public float flashDuration = 0.2f;
 
+    [Header("Restart")]
+    public Button restartButton;
+
     private readonly Dictionary<string, ParticipantEntryUI> _entryByName = new Dictionary<string, ParticipantEntryUI>();
     private readonly HashSet<string> _eliminated = new HashSet<string>();
 
@@ -133,6 +138,9 @@ public class GameStateController : MonoBehaviour
 
         if (proceedButton != null)
             proceedButton.onClick.AddListener(OnProceedClicked);
+        if (restartButton != null)
+            restartButton.onClick.AddListener(RestartTournament);
+
 
         if (randomizeStatsOnStart)
         {
@@ -668,6 +676,15 @@ public class GameStateController : MonoBehaviour
 
             missionText.text = $"Mission: Help {_missionTargetName} reach the final";
         }
+        if (Keyboard.current != null && Keyboard.current.lKey.wasPressedThisFrame)
+        {
+            Debug.Log("Restarting...");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
@@ -870,6 +887,12 @@ public class GameStateController : MonoBehaviour
         t.localScale = original * 0.9f;
         yield return new WaitForSeconds(0.1f);
         t.localScale = original;
+    }
+    private void RestartTournament()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+        );
     }
 
 }
